@@ -1,0 +1,109 @@
+:root {
+    --primary-color: #7289da; /* Warna biru Discord */
+    --background-color: #36393f; /* Background gelap Discord */
+    --sidebar-color: #2f3136; /* Warna sidebar Discord */
+    --text-color: #dcddde; /* Warna teks putih */
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  .sidebar {
+    height: 100vh;
+    background-color: var(--sidebar-color);
+    padding: 20px;
+    position: fixed;
+    width: 250px;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+  }
+  
+  .sidebar .nav-link {
+    color: var(--text-color);
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  .sidebar .nav-link.active,
+  .sidebar .nav-link:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+  }
+  
+  .chat {
+    padding: 20px;
+    background-color: var(--background-color);
+    margin-left: 250px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chat-messages {
+    flex: 1;
+    overflow-y: scroll;
+    background-color: #40444b;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .chat-messages .list-group-item {
+    background-color: transparent;
+    border: none;
+    color: var(--text-color);
+    border-radius: 4px;
+  }
+  
+  .chat-input {
+    display: flex;
+  }
+  
+  .chat-input .form-control {
+    flex: 1;
+    margin-right: 10px;
+    background-color: #40444b;
+    color: var(--text-color);
+    border: 1px solid #4f545c;
+  }
+  
+  .chat-input .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+  
+  @media (max-width: 768px) {
+    .sidebar {
+      position: absolute;
+      top: 0;
+      left: -250px; /* Hide sidebar initially */
+      width: 250px; /* Set the width of the sidebar */
+    }
+  
+    .sidebar.show {
+      left: 0; /* Show the sidebar when it is active */
+    }
+  
+    .chat {
+      margin-left: 0; /* Full width when sidebar is hidden */
+    }
+  
+    .sidebar-toggle {
+      display: block; /* Show toggle button */
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1100; /* Ensure it sits above the sidebar */
+    }
+  }
+  
+  .sidebar-toggle {
+    display: none;
+  }
+  

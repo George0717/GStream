@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+.sidebar {
+  height: 100vh;
+  position: fixed;
+}
+
+.chat {
+  padding: 20px;
+}
+
+.chat-messages {
+  height: calc(100vh - 80px);
+  overflow-y: scroll;
+  margin-bottom: 20px;
+}
+
+.chat-input {
+  display: flex;
+}
+
+.chat-input .form-control {
+  flex: 1;
+  margin-right: 10px;
+}
+
