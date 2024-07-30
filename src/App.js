@@ -1,20 +1,32 @@
-import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './components/page/Dashboard';
-import Login from './components/page/Login';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Dashboard from "./components/page/Dashboard";
+import Login from "./components/page/Login";
+import Channel from "./components/page/Channel";
+import SideBar from "./components/navbar/SideBar";
+import { Container, Row, Col } from "react-bootstrap";
+import './App.css'; // Import custom CSS for layout
 
 function App() {
   return (
-    <div className="App">
     <Router>
-    <Routes>
-    <Route path="/" element={<Home />}/>
-    <Route path="/login" element={<Login />}/>
-    </Routes>
+      <div className="App">
+        <Container fluid>
+          <Row>
+          <Col xs={12} md={3} className="sidebar-col">
+            <SideBar />
+          </Col>
+            <Col md={9} className="content-col">
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/channel" element={<Channel />} />
+              </Routes>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </Router>
-    
-     
-    </div>
   );
 }
 
