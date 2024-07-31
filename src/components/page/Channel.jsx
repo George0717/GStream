@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { Card, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import sampleImage from "../../assets/pict_1.jpg";
-import sampleVideo from "../../assets/vid_1.mp4";
 
-// Sample data including both images and videos
-const channels = Array.from({ length: 10 }, (_, index) => ({
+// Sample data including only images
+const channels = Array.from({ length: 12 }, (_, index) => ({
   id: index + 1,
   name: `Channel ${index + 1}`,
   description: `This is channel ${index + 1}`,
-  mediaType: index % 2 === 0 ? "image" : "video",
-  mediaUrl: index % 2 === 0 ? sampleImage : sampleVideo, // Using local files
+  mediaUrl: sampleImage, // Using local file
 }));
 
 function Channel() {
@@ -35,24 +33,11 @@ function Channel() {
               className="channel-card"
               onClick={() => handleCardClick(channel)}
             >
-              {channel.mediaType === "image" ? (
-                <Card.Img
-                  variant="top"
-                  src={channel.mediaUrl}
-                  className="channel-card-media"
-                />
-              ) : (
-                <div className="video-container">
-                  <video
-                    src={channel.mediaUrl}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="channel-card-media"
-                  />
-                </div>
-              )}
+              <Card.Img
+                variant="top"
+                src={channel.mediaUrl}
+                className="channel-card-media"
+              />
               <Card.Body>
                 <Card.Title>{channel.name}</Card.Title>
                 <Card.Text>{channel.description}</Card.Text>
@@ -69,25 +54,17 @@ function Channel() {
             <Modal.Title>{selectedChannel.name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {selectedChannel.mediaType === "image" ? (
-              <img
-                src={selectedChannel.mediaUrl}
-                alt={selectedChannel.name}
-                className="img-fluid"
-              />
-            ) : (
-              <video
-                src={selectedChannel.mediaUrl}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-100"
-              />
-            )}
+            <Card.Img
+              src={selectedChannel.mediaUrl}
+              alt={selectedChannel.name}
+              className="img-fluid modal-img-radius"
+            />
             <p className="mt-3">{selectedChannel.description}</p>
           </Modal.Body>
-          <Modal.Footer>
+          <Modal.Footer className="d-flex justify-content-between">
+            <Button variant="primary" onClick={handleCloseModal}>
+              Chat Group
+            </Button>
             <Button variant="secondary" onClick={handleCloseModal}>
               Close
             </Button>

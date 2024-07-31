@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Nav } from "react-bootstrap";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { Link, useLocation } from "react-router-dom"; // Use Link and useLocation
+import { Link, useLocation } from "react-router-dom";
 
 function SideBar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
   const toggleSidebar = () => setIsOpen(!isOpen);
+
+  const isMessagePage = location.pathname === "/message";
 
   return (
     <>
@@ -17,7 +19,7 @@ function SideBar() {
       >
         {isOpen ? <FaTimes /> : <FaBars />}
       </button>
-      <div className={`sidebar ${isOpen ? "show" : ""}`}>
+      <div className={`sidebar ${isOpen ? "show" : ""} `}>
         <Nav className="flex-column">
           <Nav.Item>
             <Nav.Link
@@ -26,6 +28,15 @@ function SideBar() {
               className={location.pathname === "/" ? "active" : ""}
             >
               Home
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link
+              as={Link}
+              to="/message"
+              className={location.pathname === "/message" ? "active" : ""}
+            >
+              Message
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
@@ -61,7 +72,7 @@ function SideBar() {
               to="/logout"
               className={location.pathname === "/logout" ? "active" : ""}
             >
-              Logout
+              Account
             </Nav.Link>
           </Nav.Item>
         </Nav>

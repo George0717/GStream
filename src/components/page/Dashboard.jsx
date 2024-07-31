@@ -1,15 +1,11 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import SideBar from "../navbar/SideBar";
-import Chat from "../navbar/Chat";
+
 
 function Dashboard() {
   return (
-    <Container fluid>
-      <Row>
-          <Chat />
-      </Row>
-    </Container>
+      <div className="mt-2">
+        <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, maiores!</h6>
+      </div>
   );
 }
 

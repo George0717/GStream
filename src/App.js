@@ -6,6 +6,7 @@ import Channel from "./components/page/Channel";
 import SideBar from "./components/navbar/SideBar";
 import { Container, Row, Col } from "react-bootstrap";
 import './App.css'; // Import custom CSS for layout
+import Message from "./components/page/Message";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/channel" element={<Channel />} />
+                <Route path="/message" element={<Message />} />
               </Routes>
             </Col>
           </Row>
